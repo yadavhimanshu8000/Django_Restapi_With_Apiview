@@ -1,22 +1,20 @@
 from rest_framework import serializers
-from restapi.models import *
+from .models import User, Post, Follows
 
-class userserializer(serializers.ModelSerializer):
+
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
-        
-class postserializer(serializers.ModelSerializer):
+        fields = [ 'username', 'role']
+
+
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = '__all__'
-        
-class followsserializer(serializers.ModelSerializer):
+        fields = ['title', 'body', 'status', 'user_id']
+
+
+class FollowsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follows
-        fields = '__all__'
-        
-        
-        
-
-
+        fields = ['following_user_id', 'followed_user_id']
